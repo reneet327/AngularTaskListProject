@@ -1,0 +1,33 @@
+<div id="groceryList" ng-controller="gListCtrl">
+
+      <h3>Grocery List</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Purchased</th>
+          <tr>
+        </thead>
+        <tr ng-repeat="grocery in groceries">
+          <td>{{grocery.item}}</td>
+          <td>
+            <!-- Bind the checkbox to the data model -->
+            <input type="checkbox" ng-model="grocery.purchased" />
+          </td>
+        </tr>
+      </table>
+
+      <br>
+
+      <!-- User enters a new item and when the button is clicked
+      the value in the input box is added to the array -->
+      <label>New Item :
+        <input type="text" ng-model="newItem" />
+      </label>
+      <button ng-click="addItem(newItem)">Add Item</button>
+
+      <!-- Error shows here if no item was entered -->
+      <h4>{{missingNewItemError}}</h4>
+
+    </div> <!-- End of groceryList -->

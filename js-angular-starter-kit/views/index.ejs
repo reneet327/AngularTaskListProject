@@ -1,0 +1,64 @@
+<html ng-app="myApp" ng-cloak>
+  <head>
+    <title>Task List Project</title>
+    <style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none;
+    }
+    table{
+      width: 400px;
+      text-align: left;
+      border: 2px solid black;
+      padding: 10px;
+    }
+    input.ng-dirty.ng-invalid {
+      border-color: red;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div id="taskList" ng-controller="tListCtrl">
+
+      <h3>Task List</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Completed</th>
+          <tr>
+        </thead>
+        <tr ng-repeat="task in tasks">
+          <td>{{task.item}}</td>
+          <td>
+            <!-- Bind the checkbox to the data model -->
+            <input type="checkbox" ng-click="rmvItem($event)" value="{{task.item}}" />
+
+          </td>
+        </tr>
+      </table>
+
+      <br>
+
+      <!-- User enters a new item and when the button is clicked
+      the value in the input box is added to the array -->
+      <label>New Item :
+        <input type="text" ng-model="newItem" />
+      </label>
+      <button ng-click="addItem(newItem)">Add Item</button><br><br>
+      
+
+
+      <!-- Error shows here if no item was entered -->
+      <h4>{{missingNewItemError}}</h4>
+
+    </div> <!-- End of taskList -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="ngApp/app.js"></script>
+
+  </body>
+</html>
